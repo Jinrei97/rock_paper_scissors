@@ -45,3 +45,42 @@ function getHumanChoice() {
     }
 }
 
+let computerScore = 0;
+let humanScore = 0;
+
+function playRound(human = getHumanChoice(), cpu = getComputerChoice()) {
+    if (human === cpu){
+        console.log("it's a tie!");
+    }
+    switch (human) {
+        case "rock":
+            if (cpu === "paper") {
+                console.log("You lose! paper beats rock.")
+                computerScore += 1;
+            } else {
+                console.log("You win! rock beats scissors");
+                humanScore += 1;
+            }
+            break;
+
+        case "paper":
+            if (cpu === "scissors") {
+                console.log("You lose! scissors beats paper.")
+                computerScore += 1;
+            } else {
+                console.log("You win! paper beats rock");
+                humanScore += 1;
+            }
+            break;
+
+        case "scissors":
+            if (cpu === "rock") {
+                console.log("You lose! rock beats scissors.")
+                computerScore += 1;
+            } else {
+                console.log("You win! scissors beats paper");
+                humanScore += 1;
+            }
+    }    
+    console.log(`score -- human ${humanScore} | cpu ${computerScore}`);
+}
