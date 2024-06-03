@@ -29,3 +29,19 @@ function test(n){
     console.log(`rocks: ${n_rock}, papers: ${n_paper}, scissors ${n_scissors}`)
 };
 */
+
+function getHumanChoice() {
+    let choice = prompt("rock, paper or scissors?");
+    choice = choice.toLowerCase();
+    switch (choice) {
+        case "rock":
+        case "paper":
+        case "scissors":
+            return choice;
+            break;
+        default:
+            alert("scelta non valida");
+            return getHumanChoice();
+    }
+}
+
