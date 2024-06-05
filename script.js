@@ -9,8 +9,18 @@ function getComputerChoice() {
     }
 };
 
+function reset() {
+    humanScore = 0;
+    computerScore = 0;
+}
+
 let computerScore = 0;
 let humanScore = 0;
+
+const reset_button = document.querySelector(".reset");
+reset_button.addEventListener("click", e => {
+    reset();
+});
 
 const buttons = document.querySelectorAll("div button");
 
@@ -22,6 +32,7 @@ buttons.forEach((button) => {
 
 function playRound(human = "rock", cpu = getComputerChoice()) {
     const result_div = document.querySelector(".result");
+    const scoreboard = document.querySelector(".score");
     human = human.toLowerCase();
     if (human === cpu){
         result_div.textContent = "it's a tie!";
@@ -56,15 +67,13 @@ function playRound(human = "rock", cpu = getComputerChoice()) {
                 humanScore += 1;
             }
     }    
-    console.log(`score -- human ${humanScore} | cpu ${computerScore}`);
-}
-
-
-/*
-function playGame() {
-    for (let i = 0; i < 5; i++){
-        playRound();
+    if (humanScore === 5) {
+        scoreboard.textContent = "You won!";
+    } else if (computerScore === 5) {
+        scoreboard.textContent = "Cpu won!";
+    } else {
+        scoreboard.textContent = `score -- human ${humanScore} | cpu ${computerScore}`;
     }
-    (humanScore > computerScore) ? console.log("You win!") : console.log("You lose!");
 }
-*/
+
+
